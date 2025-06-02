@@ -5,4 +5,10 @@ class Producto(ComplexModel):
     nombre = Unicode
     precio = Float
 
+class CarritoItem(ComplexModel):
+    producto_id = Integer
+    nombre = Unicode
+    precio = Float
+    cantidad = Integer
+
 
