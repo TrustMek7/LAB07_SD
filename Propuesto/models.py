@@ -11,4 +11,7 @@ class CarritoItem(ComplexModel):
     precio = Float
     cantidad = Integer
 
-
+class Compra(ComplexModel):
+    usuario = Unicode
+    total = Float
+    productos = Array(CarritoItem)
