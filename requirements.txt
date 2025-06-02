@@ -1,0 +1,4 @@
+spyne
+zeep
+flask
+lxml
