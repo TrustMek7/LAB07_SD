@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Lista de Productos</h1>
+<ul>
+{% for p in productos %}
+    <li>{{ p.id }} - {{ p.nombre }} - S/. {{ p.precio }}</li>
+{% endfor %}
+</ul>
+<form action="/agregar" method="post">
+    <input name="nombre" placeholder="Nombre" required>
+    <input name="precio" placeholder="Precio" required>
+    <button type="submit">Agregar</button>
+</form>
+<a href="/carrito/juan">Ir al carrito de Juan</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carrito</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Carrito de {{ usuario }}</h1>
+<ul>
+{% for item in carrito %}
+    <li>
+        ID Producto: {{ item.producto_id }}
+        {% set prod = (productos | selectattr('id', 'equalto', item.producto_id) | list | first) %}
+        {% if prod %}
+            | Nombre: {{ prod.nombre }}
+        {% endif %}
+        | Cantidad: {{ item.cantidad }}
+    </li>
+{% endfor %}
+</ul>
+<form method="POST" action="/carrito/{{ usuario }}/add">
+    <select name="producto_id" required>
+        <option value="">Seleccione producto</option>
+        {% for p in productos %}
+            <option value="{{ p.id }}">{{ p.nombre }}</option>
+        {% endfor %}
+    </select>
+    <input name="cantidad" placeholder="Cantidad" required>
+    <button type="submit">Agregar al carrito</button>
+</form>
+<p><a href="/comprar/{{ usuario }}">Comprar</a></p>
+<p><a href="/historial/{{ usuario }}">Ver historial</a></p>
+<p><a href="/">Inicio</a></p>
+</div>
+</body>
+</html>

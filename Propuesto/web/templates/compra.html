@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Compra realizada</h1>
+<p>Usuario: {{ compra.usuario }}</p>
+<p>Total: S/. {{ compra.total }}</p>
+<ul>
+{% for item in compra.productos %}
+    <li>
+        ID {{ item.producto_id }}
+        | Nombre: {{ item.nombre }}
+        | Precio: S/. {{ item.precio }}
+        | Cantidad: {{ item.cantidad }}
+    </li>
+{% endfor %}
+</ul>
+<p><a href="/">Inicio</a></p>
+</div>
+</body>
+</html>
